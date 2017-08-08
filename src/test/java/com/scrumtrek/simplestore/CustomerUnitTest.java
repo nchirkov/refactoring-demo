@@ -1,15 +1,17 @@
 package com.scrumtrek.simplestore;
 
-import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CustomerUnitTest {
     @Test
     public void shouldSetupNameWhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
-        Assert.assertEquals("newCustomer", sut.getName());
+        assertEquals("newCustomer", sut.getName());
     }
 
     @Test
@@ -25,7 +27,7 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("2.0"));
+        assertTrue(sut.Statement().contains("2.0"));
     }
 
     @Test
@@ -41,7 +43,7 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("6.5"));
+        assertTrue(sut.Statement().contains("6.5"));
     }
 
      @Test
@@ -62,7 +64,7 @@ public class CustomerUnitTest {
         sut.addRental(stubRental1);
         sut.addRental(stubRental2);
 
-        Assert.assertTrue(sut.Statement().contains("4.0"));
+        assertTrue(sut.Statement().contains("4.0"));
     }
 
     @Test
@@ -78,7 +80,7 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("3.0"));
+        assertTrue(sut.Statement().contains("3.0"));
     }
 
     @Test
@@ -94,7 +96,7 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("1.5"));
+        assertTrue(sut.Statement().contains("1.5"));
     }
 
     @Test
@@ -110,7 +112,7 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("3.0"));
+        assertTrue(sut.Statement().contains("3.0"));
     }
 
     @Test
@@ -126,6 +128,6 @@ public class CustomerUnitTest {
 
         sut.addRental(stubRental);
 
-        Assert.assertTrue(sut.Statement().contains("9.0"));
+        assertTrue(sut.Statement().contains("9.0"));
     }
 }
