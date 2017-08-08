@@ -16,7 +16,8 @@ public class CustomerTest {
     @Ignore
     public void shouldCost2Dollars_WhenAddRegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
-                Movie movie = new Movie("Star Wars", PriceCodes.Regular);
+
+        Movie movie = new Movie("Star Wars", PriceCodes.Regular);
         Rental rental = new Rental(movie, 1);
 
         sut.addRental(rental);

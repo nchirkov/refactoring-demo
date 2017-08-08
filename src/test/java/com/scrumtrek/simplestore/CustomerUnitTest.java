@@ -44,7 +44,7 @@ public class CustomerUnitTest {
         Assert.assertTrue(sut.Statement().contains("6.5"));
     }
 
-    @Test
+     @Test
      public void shouldCost4Dollars_WhenAdd2RegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
 
@@ -63,5 +63,37 @@ public class CustomerUnitTest {
         sut.addRental(stubRental2);
 
         Assert.assertTrue(sut.Statement().contains("4.0"));
+    }
+
+    @Test
+    public void shouldCost2Dollars_WhenAddNewReleaseMovieFor1Day() {
+        Customer sut = new Customer("newCustomer");
+
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.NewRelease);
+
+        Rental stubRental = mock(Rental.class);
+        when(stubRental.getDaysRented()).thenReturn(1);
+        when(stubRental.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental);
+
+        Assert.assertTrue(sut.Statement().contains("3.0"));
+    }
+
+    @Test
+    public void shouldCost2Dollars_WhenAddChildrenMovieFor1Day() {
+        Customer sut = new Customer("newCustomer");
+
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.Childrens);
+
+        Rental stubRental = mock(Rental.class);
+        when(stubRental.getDaysRented()).thenReturn(1);
+        when(stubRental.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental);
+
+        Assert.assertTrue(sut.Statement().contains("1.5"));
     }
 }
