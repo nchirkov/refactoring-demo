@@ -4,16 +4,15 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class CustomerTest {
     @Test
-    @Ignore
     public void shouldSetupNameWhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
         Assert.assertEquals("newCustomer", sut.getName());
     }
 
     @Test
-    @Ignore
     public void shouldCost2Dollars_WhenAddRegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
 
@@ -26,7 +25,6 @@ public class CustomerTest {
     }
 
     @Test
-    @Ignore
     public void shouldCost6point5Dollars_WhenAddRegularMovieFor5Day() {
         Customer sut = new Customer("newCustomer");
         Movie movie = new Movie("Star Wars", PriceCodes.Regular);
@@ -38,7 +36,6 @@ public class CustomerTest {
     }
 
     @Test
-    @Ignore
     public void shouldCost4Dollars_WhenAdd2RegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
         Movie movie1 = new Movie("Star Wars", PriceCodes.Regular);
