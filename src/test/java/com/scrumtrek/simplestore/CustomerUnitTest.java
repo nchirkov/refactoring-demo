@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 public class CustomerUnitTest {
     @Test
-    public void shouldSetupNameWhenCreateCustomer() {
+    public void shouldSetupName_WhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
         assertEquals("newCustomer", sut.getName());
     }

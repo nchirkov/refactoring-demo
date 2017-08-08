@@ -7,7 +7,7 @@ import org.junit.Test;
 @Ignore
 public class CustomerSystemTest {
     @Test
-    public void shouldSetupNameWhenCreateCustomer() {
+    public void shouldSetupName_WhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
         Assert.assertEquals("newCustomer", sut.getName());
     }
