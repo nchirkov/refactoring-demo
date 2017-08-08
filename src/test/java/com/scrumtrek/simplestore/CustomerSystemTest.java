@@ -5,7 +5,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class CustomerTest {
+public class CustomerSystemTest {
     @Test
     public void shouldSetupNameWhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
