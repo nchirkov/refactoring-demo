@@ -113,4 +113,19 @@ public class CustomerUnitTest {
         Assert.assertTrue(sut.Statement().contains("3.0"));
     }
 
+    @Test
+    public void shouldCost3Dollars_WhenAddNewReleaseMovieFor3Day() {
+        Customer sut = new Customer("newCustomer");
+
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.NewRelease);
+
+        Rental stubRental = mock(Rental.class);
+        when(stubRental.getDaysRented()).thenReturn(3);
+        when(stubRental.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental);
+
+        Assert.assertTrue(sut.Statement().contains("9.0"));
+    }
 }
