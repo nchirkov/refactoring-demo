@@ -3,8 +3,9 @@ package com.scrumtrek.simplestore;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
 
-public class CustomerTest {
+public class CustomerUnitTest {
     @Test
     @Ignore
     public void shouldSetupNameWhenCreateCustomer() {
@@ -13,13 +14,17 @@ public class CustomerTest {
     }
 
     @Test
-    @Ignore
     public void shouldCost2Dollars_WhenAddRegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
-                Movie movie = new Movie("Star Wars", PriceCodes.Regular);
-        Rental rental = new Rental(movie, 1);
 
-        sut.addRental(rental);
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.Regular);
+
+        Rental stubRental = mock(Rental.class);
+        when(stubRental.getDaysRented()).thenReturn(1);
+        when(stubRental.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental);
 
         Assert.assertTrue(sut.Statement().contains("2.0"));
     }
@@ -38,7 +43,7 @@ public class CustomerTest {
 
     @Test
     @Ignore
-    public void shouldCost4Dollars_WhenAdd2RegularMovieFor1Day() {
+     public void shouldCost4Dollars_WhenAdd2RegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
         Movie movie1 = new Movie("Star Wars", PriceCodes.Regular);
         Movie movie2 = new Movie("Star Wars II", PriceCodes.Regular);
