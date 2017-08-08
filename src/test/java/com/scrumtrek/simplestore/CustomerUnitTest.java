@@ -7,7 +7,6 @@ import static org.mockito.Mockito.*;
 
 public class CustomerUnitTest {
     @Test
-    @Ignore
     public void shouldSetupNameWhenCreateCustomer() {
         Customer sut = new Customer("newCustomer");
         Assert.assertEquals("newCustomer", sut.getName());
@@ -30,28 +29,38 @@ public class CustomerUnitTest {
     }
 
     @Test
-    @Ignore
     public void shouldCost6point5Dollars_WhenAddRegularMovieFor5Day() {
         Customer sut = new Customer("newCustomer");
-        Movie movie = new Movie("Star Wars", PriceCodes.Regular);
-        Rental rental = new Rental(movie, 5);
 
-        sut.addRental(rental);
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.Regular);
+
+        Rental stubRental = mock(Rental.class);
+        when(stubRental.getDaysRented()).thenReturn(5);
+        when(stubRental.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental);
 
         Assert.assertTrue(sut.Statement().contains("6.5"));
     }
 
     @Test
-    @Ignore
      public void shouldCost4Dollars_WhenAdd2RegularMovieFor1Day() {
         Customer sut = new Customer("newCustomer");
-        Movie movie1 = new Movie("Star Wars", PriceCodes.Regular);
-        Movie movie2 = new Movie("Star Wars II", PriceCodes.Regular);
-        Rental rental1 = new Rental(movie1, 1);
-        Rental rental2 = new Rental(movie2, 1);
 
-        sut.addRental(rental1);
-        sut.addRental(rental2);
+        Movie stubMovie = mock(Movie.class);
+        when(stubMovie.getPriceCode()).thenReturn(PriceCodes.Regular);
+
+        Rental stubRental1 = mock(Rental.class);
+        when(stubRental1.getDaysRented()).thenReturn(1);
+        when(stubRental1.getMovie()).thenReturn(stubMovie);
+
+        Rental stubRental2 = mock(Rental.class);
+        when(stubRental2.getDaysRented()).thenReturn(1);
+        when(stubRental2.getMovie()).thenReturn(stubMovie);
+
+        sut.addRental(stubRental1);
+        sut.addRental(stubRental2);
 
         Assert.assertTrue(sut.Statement().contains("4.0"));
     }
